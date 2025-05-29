@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage{float}
+\usepackage[letterpaper, portrait, margin=2.54cm]{geometry} % Combinada y actualizada
+\usepackage{graphicx}
+% \usepackage{anysize} % Eliminado, obsoleto y cubierto por geometry
+\usepackage{lipsum}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage[spanish]{babel}
+\usepackage{apacite}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+% \usepackage{lipsum} % Eliminado, ya cargado
+% \usepackage{graphicx} % Eliminado, ya cargado
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{tocloft}
+\usepackage{lscape}
+\usepackage{adjustbox}
+\setlength{\tabcolsep}{1.505625pt}
+\renewcommand{\arraystretch}{1.2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \geometry{letterpaper, margin=2.54cm} % Movido y combinado arriba
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.18} % Unificado y compatibilidad actualizada
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Gustavo Vergara}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% \pgfplotsset{compat=1.18} % Movido al preámbulo
+\setstretch{2}
+
+\begin{titlepage}
+    \centering
+    \vspace{2.5cm}
+    {\scshape \Large OPTIMIZACIÓN TOPOLÓGICA\par}
+    \vspace{5cm}
+    \textbf\large\scshape{\par}
+    \vspace{0.5cm}
+    {\Large Vergara Pareja Gustavo\par}
+    \vspace{5cm}
+    {\scshape\Large Ávila Cesar\par}
+    \vspace{0.3cm}
+    {\scshape\Large MEF COMPUTACIONAL \par}
+    \vspace{0.3cm}
+    {\scshape\Large Universidad de Córdoba\par}
+    \vspace{0.3cm}
+    {\Large 28 de Mayo de 2025 \par}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Introducción}
+\begin{itemize}
+    \item A continuación realizaremos la optimización topológica de una viga utilizando el software de COMSOL Multiphysics, específicamente en el módulo de mecánica estructural. Así encontraremos la forma óptima de la viga para minimizar el uso de material mientras se cumplen las restricciones de carga y desplazamiento. La optimización ideal será aquella en donde se minimice la masa de la pieza, manteniendo la rigidez necesaria para soportar las cargas aplicadas. La viga se realizará con base al modelo Messerschmitt-Bölkow-Blohm (MBB).
+\end{itemize}
+\section{Definición del modelo}
+    \begin{itemize}
+        \item Estas cartas miden la proporción de unidades no conformes en un grupo de unidades que se
+        inspecciona. El objetivo es comprobar si la evolución de las proporciones muestrales observadas
+        son compatibles con un mismo valor poblacional p.
+        Este tipo de grafica se puede construir con n constante o variable por lo que a continuación se
+        muestra el procedimiento para ambos casos.
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=0.6\textwidth]{CartaPVar.png}
+            \caption[short]{Pasos para Carta P, con n constante}
+            \label{fig:cartaP_n_constante} % Etiqueta corregida
+          \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{CartaP.png}
+            \caption[short]{Pasos para Carta P, con n variable}
+            \label{fig:cartaP_n_variable} % Etiqueta corregida
+          \end{figure}
+    
+    \end{itemize}
+    Un fabricante de latas de aluminio registra el número de partes defectuosas, tomando
+    muestras cada hora de 50 latas, con 30 subgrupos. Construir la carta de control p (proporción de
+    defectuosos) para la siguiente serie de datos obtenida durante el muestreo además dar un
+    informe de la interpretación de carta obtenida. (Construir una carta de control P)
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{GrafP.png}
+        \caption[short]{Gráfico Carta P}
+        \label{fig:graficoP} % Etiqueta corregida
+      \end{figure}
+      \newpage
+\section{Carta de control por atributos NP (Número de defectuosos)}
+
+\begin{itemize}
+    \item La carta np es una herramienta estadística usada para evaluar el número de artículos
+    defectuosos o el número de artículos no conformes producidos por un proceso. Tenga en cuenta
+    que siempre que una carta np se pueda utilizar también se podrá utilizar una carta p.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{CartaNP.png}
+        \caption[short]{Pasos para Carta NP}
+        \label{fig:cartaNP} % Etiqueta corregida
+      \end{figure}
+    \item La siguiente tabla de datos fue obtenida mediante la apertura al azar de una caja seleccionada
+    de cada envío y contando el número de perfiles de acero golpeados que tenia cada caja. Había 250
+    perfiles por caja.
+    Construir una carta de control np (número de defectuosos).
+\end{itemize}
+
+  \bibliographystyle{apacite}
+\nocite{*}
+\bibliography{cartas-por-atributos}
+\end{document}

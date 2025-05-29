@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {2}Definición del modelo}{2}{}%
+\contentsline {section}{\numberline {3}Carta de control por atributos NP (Número de defectuosos)}{4}{}%
