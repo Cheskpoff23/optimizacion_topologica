@@ -1,15 +1,13 @@
 \documentclass{article}
-
+\usepackage[english, spanish]{babel}
 \usepackage{float}
 \usepackage[letterpaper, portrait, margin=2.54cm]{geometry} % Combinada y actualizada
 \usepackage{graphicx}
-% \usepackage{anysize} % Eliminado, obsoleto y cubierto por geometry
 \usepackage{lipsum}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{csquotes}
-\usepackage[spanish]{babel}
 \usepackage{apacite}
 \usepackage{multicol}
 \usepackage{parskip}
@@ -29,13 +27,6 @@
 \setlength{\tabcolsep}{1.505625pt}
 \renewcommand{\arraystretch}{1.2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Other Settings
-
-%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \geometry{letterpaper, margin=2.54cm} % Movido y combinado arriba
-
-%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{ocre}{RGB}{243,102,25}
 \definecolor{mygray}{RGB}{243,243,244}
 \definecolor{deepGreen}{RGB}{26,111,0}
@@ -75,7 +66,7 @@
 \begin{titlepage}
     \centering
     \vspace{2.5cm}
-    {\scshape \Large OPTIMIZACIÓN TOPOLÓGICA\par}
+    {\scshape \Large OPTIMIZACIÓN TOPOLÓGICA DE UNA VIGA MBB\par}
     \vspace{5cm}
     \textbf\large\scshape{\par}
     \vspace{0.5cm}
@@ -93,59 +84,48 @@
 \newpage
 \section{Introducción}
 \begin{itemize}
-    \item A continuación realizaremos la optimización topológica de una viga utilizando el software de COMSOL Multiphysics, específicamente en el módulo de mecánica estructural. Así encontraremos la forma óptima de la viga para minimizar el uso de material mientras se cumplen las restricciones de carga y desplazamiento. La optimización ideal será aquella en donde se minimice la masa de la pieza, manteniendo la rigidez necesaria para soportar las cargas aplicadas. La viga se realizará con base al modelo Messerschmitt-Bölkow-Blohm (MBB).
+    \item A continuación realizaremos la optimización topológica de una viga utilizando el software de COMSOL Multiphysics y este basándose en el método SIMP (Solid Isotropic Material with Penalization), específicamente en el módulo de mecánica estructural. Así encontraremos la forma óptima de la viga para minimizar el uso de material mientras se cumplen las restricciones de carga y desplazamiento. La optimización ideal será aquella en donde se minimice la masa de la pieza, manteniendo la rigidez necesaria para soportar las cargas aplicadas. La viga se realizará con base al modelo Messerschmitt-Bölkow-Blohm (MBB).
 \end{itemize}
 \section{Definición del modelo}
     \begin{itemize}
-        \item Estas cartas miden la proporción de unidades no conformes en un grupo de unidades que se
-        inspecciona. El objetivo es comprobar si la evolución de las proporciones muestrales observadas
-        son compatibles con un mismo valor poblacional p.
-        Este tipo de grafica se puede construir con n constante o variable por lo que a continuación se
-        muestra el procedimiento para ambos casos.
-        \begin{figure}[!ht]
-            \centering
-            \includegraphics[width=0.6\textwidth]{CartaPVar.png}
-            \caption[short]{Pasos para Carta P, con n constante}
-            \label{fig:cartaP_n_constante} % Etiqueta corregida
-          \end{figure}
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.6\textwidth]{CartaP.png}
-            \caption[short]{Pasos para Carta P, con n variable}
-            \label{fig:cartaP_n_variable} % Etiqueta corregida
-          \end{figure}
-    
-    \end{itemize}
-    Un fabricante de latas de aluminio registra el número de partes defectuosas, tomando
-    muestras cada hora de 50 latas, con 30 subgrupos. Construir la carta de control p (proporción de
-    defectuosos) para la siguiente serie de datos obtenida durante el muestreo además dar un
-    informe de la interpretación de carta obtenida. (Construir una carta de control P)
-    \begin{figure}[ht!]
-        \centering
-        \includegraphics[width=0.6\textwidth]{GrafP.png}
-        \caption[short]{Gráfico Carta P}
-        \label{fig:graficoP} % Etiqueta corregida
-      \end{figure}
-      \newpage
-\section{Carta de control por atributos NP (Número de defectuosos)}
+        \item El criterio de optimización SIMP utiliza un factor de volumen del material $\theta_c$, esto hace que el modelo entienda donde será sólido en función de la distribución de cargas. Pero rellenar el modelo con esta nube de puntos, creará una optimización con puntos infinitesimales que no permitirá un mallado posteriormente. Por ello, esta variable se limita con un filtro $\theta_f$ (Filtro de Helmholtz), que suaviza el diseño eliminando detalles muy pequeños y además define el tamaño mínimo de estos huecos. Este filtro se aplica a la variable de diseño $\theta_c$ y se define como: 
+        \begin{equation}
+                \theta_f = R_{min}^2 \nabla^2 \theta_f + \theta_c
+                \label{eq:filtro_helmholtz}
+             \end{equation}
+             La imagen suavizada $\theta_f$ se proyecta utilizando la siguiente función de proyección con tangente hiperbólica, para reducir la difuminación :
+             \begin{equation}
+             \theta = \frac{\tanh(\beta(\theta_f - \theta_\beta)) + \tanh(\beta\theta_\beta)}{\tanh(\beta(1 - \theta_\beta)) + \tanh(\beta\theta_\beta)}
+             \end{equation}
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{2.png}
+              \caption{Viga MBB}
+              \label{fig:imagen_x}
+            \end{figure}
 
-\begin{itemize}
-    \item La carta np es una herramienta estadística usada para evaluar el número de artículos
-    defectuosos o el número de artículos no conformes producidos por un proceso. Tenga en cuenta
-    que siempre que una carta np se pueda utilizar también se podrá utilizar una carta p.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\textwidth]{CartaNP.png}
-        \caption[short]{Pasos para Carta NP}
-        \label{fig:cartaNP} % Etiqueta corregida
-      \end{figure}
-    \item La siguiente tabla de datos fue obtenida mediante la apertura al azar de una caja seleccionada
-    de cada envío y contando el número de perfiles de acero golpeados que tenia cada caja. Había 250
-    perfiles por caja.
-    Construir una carta de control np (número de defectuosos).
-\end{itemize}
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{1.png}
+              \caption{Suavización y remodelamiento}
+              \label{fig:imagen_x}
+            \end{figure}
+          Entonces podemos notar que valores de $\beta$ altos hacen que la proyección sea más estricta y definida, mientras que valores bajos hacen que la función se asemeje a una función lineal y por eso seguiría viéndose difuminada. Por lo tanto, el valor de $\beta$ debe ser lo suficientemente alto para evitar la difuminación, pero no tan alto como para que la optimización no converja o que tenga mucho coste computacional.
+          Además, para evitar que todo sea sólido, limitamos el volumen optimizado.
+          \begin{equation}
+            0 \leq \theta_{\mathrm{avg}} = \int\limits_{\Omega} \theta(\mathbf{x})\, d\Omega \leq V_{\mathrm{frac}}
+          \end{equation}
+            Para finalizar, garantizamos que la respuesta del modelo sea 0s y 1s. Aunque no puede faltar la inclusión de la rigidez en todo este cálculo, por tanto:
+          \begin{equation}
+            \theta_p = \theta_{\min} + (1 - \theta_{\min}) \theta(\mathbf{x})^p
+          \end{equation}
+          \begin{equation}
+            E(\mathbf{x}) = E_0 \theta_p
+          \end{equation}
 
-  \bibliographystyle{apacite}
+
+ 
+          \bibliographystyle{apacite}
 \nocite{*}
-\bibliography{cartas-por-atributos}
+\bibliography{bib}
 \end{document}

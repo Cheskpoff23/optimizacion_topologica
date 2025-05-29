@@ -1,0 +1,89 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Bendsoe%
+}{%
+Bendsoe%
+}{%
+{\protect \APACyear {1989}}%
+}]{%
+bendsoe1989optimal}
+\APACinsertmetastar {%
+bendsoe1989optimal}%
+\begin{APACrefauthors}%
+Bendsoe, M\BPBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1989}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Optimal shape design as a material distribution problem}
+  {Optimal shape design as a material distribution problem}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Structural Optimization}{1}{}{193--202}.
+\newblock
+\begin{APACrefDOI} \doi{10.1007/BF01650949} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Lazarov%
+\ \BBA {} Sigmund%
+}{%
+Lazarov%
+\ \BBA {} Sigmund%
+}{%
+{\protect \APACyear {2011}}%
+}]{%
+lazarov2011filters}
+\APACinsertmetastar {%
+lazarov2011filters}%
+\begin{APACrefauthors}%
+Lazarov, B\BPBI S.%
+\BCBT {}\ \BBA {} Sigmund, O.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Filters in topology optimization based on Helmholtz-type
+  differential equations} {Filters in topology optimization based on
+  helmholtz-type differential equations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{International Journal for Numerical Methods in
+  Engineering}{86}{}{765--781}.
+\newblock
+\begin{APACrefDOI} \doi{10.1002/nme.3072} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wang%
+, Lazarov%
+\BCBL {}\ \BBA {} Sigmund%
+}{%
+Wang%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+wang2011projection}
+\APACinsertmetastar {%
+wang2011projection}%
+\begin{APACrefauthors}%
+Wang, F.%
+, Lazarov, B\BPBI S.%
+\BCBL {}\ \BBA {} Sigmund, O.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {On projection methods, convergence and robust
+  formulations in topology optimization} {On projection methods, convergence
+  and robust formulations in topology optimization}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Structural and Multidisciplinary
+  Optimization}{43}{}{767--784}.
+\newblock
+\begin{APACrefDOI} \doi{10.1007/s00158-010-0602-y} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
