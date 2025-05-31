@@ -72,7 +72,7 @@
     \vspace{0.5cm}
     {\Large Vergara Pareja Gustavo\par}
     \vspace{5cm}
-    {\scshape\Large Ávila Cesar\par}
+    {\scshape\Large Ávila Díaz Cesar Iván\par}
     \vspace{0.3cm}
     {\scshape\Large MEF COMPUTACIONAL \par}
     \vspace{0.3cm}
@@ -83,12 +83,12 @@
 \tableofcontents
 \newpage
 \section{Introducción}
-\begin{itemize}
-    \item A continuación realizaremos la optimización topológica de una viga utilizando el software de COMSOL Multiphysics y este basándose en el método SIMP (Solid Isotropic Material with Penalization), específicamente en el módulo de mecánica estructural. Así encontraremos la forma óptima de la viga para minimizar el uso de material mientras se cumplen las restricciones de carga y desplazamiento. La optimización ideal será aquella en donde se minimice la masa de la pieza, manteniendo la rigidez necesaria para soportar las cargas aplicadas. La viga se realizará con base al modelo Messerschmitt-Bölkow-Blohm (MBB).
-\end{itemize}
+
+    A continuación realizaremos la optimización topológica de una viga utilizando el software de COMSOL Multiphysics y este basándose en el método SIMP (Solid Isotropic Material with Penalization), específicamente en el módulo de mecánica estructural. Así encontraremos la forma óptima de la viga para minimizar el uso de material mientras se cumplen las restricciones de carga y desplazamiento. La optimización ideal será aquella en donde se minimice la masa de la pieza, manteniendo la rigidez necesaria para soportar las cargas aplicadas. La viga se realizará con base al modelo Messerschmitt-Bölkow-Blohm (MBB).
+
 \section{Definición del modelo}
-    \begin{itemize}
-        \item El criterio de optimización SIMP utiliza un factor de volumen del material $\theta_c$, esto hace que el modelo entienda donde será sólido en función de la distribución de cargas. Pero rellenar el modelo con esta nube de puntos, creará una optimización con puntos infinitesimales que no permitirá un mallado posteriormente. Por ello, esta variable se limita con un filtro $\theta_f$ (Filtro de Helmholtz), que suaviza el diseño eliminando detalles muy pequeños y además define el tamaño mínimo de estos huecos. Este filtro se aplica a la variable de diseño $\theta_c$ y se define como: 
+   
+       El criterio de optimización SIMP utiliza un factor de volumen del material $\theta_c$, esto hace que el modelo entienda donde será sólido en función de la distribución de cargas. Pero rellenar el modelo con esta nube de puntos, creará una optimización con puntos infinitesimales que no permitirá un mallado posteriormente. Por ello, esta variable se limita con un filtro $\theta_f$ (Filtro de Helmholtz), que suaviza el diseño eliminando detalles muy pequeños y además define el tamaño mínimo de estos huecos. Este filtro se aplica a la variable de diseño $\theta_c$ y se define como: 
         \begin{equation}
                 \theta_f = R_{min}^2 \nabla^2 \theta_f + \theta_c
                 \label{eq:filtro_helmholtz}
@@ -122,10 +122,139 @@
           \begin{equation}
             E(\mathbf{x}) = E_0 \theta_p
           \end{equation}
-
-
- 
+          \section{Implementación en COMSOL}
+          Para implementar el modelo en COMSOL, se debe crear un nuevo modelo y seleccionar el módulo de mecánica estructural. Luego, se debe definir la geometría de la viga MBB, que es un paralelepípedo de dimensiones $x = 6\,\mathrm{m}$ (largo), $y = 1\,\mathrm{m}$ (alto) y $z = 0.5\,\mathrm{m}$ (espesor). Después, se debe definir el material de la viga y las propiedades mecánicas necesarias, como el módulo de Young y la densidad. A continuación, se deben aplicar las condiciones de frontera y las cargas necesarias para simular el comportamiento de la viga bajo carga. Finalmente, se debe configurar el estudio de optimización topológica utilizando el método SIMP y los filtros necesarios.
+\subsection{Definimos los estudios a realizar}
+  \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Definimos los estudios a realizar.png}
+              \caption{Moldel Solids and Topology Optimization Stationary}
+              \label{fig:imagen_x}
+            \end{figure}
           \bibliographystyle{apacite}
+\subsection{Definimos las variables mas importantes del estudio}}
+\begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{variables.png}
+              \caption{Definición de variables}
+              \label{fig:imagen_x}
+            \end{figure}
+
+            \subsection{Definimos la geometría a estudiar}
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Geaometria.png}
+              \caption{Geometría rectangular}
+              \label{fig:imagen_x}
+            \end{figure}
+
+            \subsection{Definimos los límites y simetrías}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Simetryy.png}
+              \caption{Simetría en y}
+              \label{fig:imagen_x}
+            \end{figure}
+              \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Simetryy2.png}
+              \caption{Simetría en x}
+              \label{fig:imagen_x}
+            \end{figure}
+            \subsection{Agregamos el material}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{mat.png}
+              \caption{Structural Steel}
+              \label{fig:imagen_x}
+            \end{figure}
+  \subsection{Agregamos los rollers y la fuerza}
+  Definimos solo un roller ya que el otro llegará por simetría
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{roll1.png}
+              \caption{Roller 1}
+              \label{fig:imagen_x}
+            \end{figure}
+
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{force.png}
+              \caption{Fuerza de -100 [kN]}
+              \label{fig:imagen_x}
+            \end{figure}
+\subsection{Definimos la malla}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{malla.png}
+              \caption{Malla}
+              \label{fig:imagen_x}
+            \end{figure}
+
+            \subsection{Parámetros para la optimización topológica}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{opt.png}
+              \caption{Optimizatión topológica}
+              \label{fig:imagen_x}
+            \end{figure}
+              \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Param.png}
+              \caption{Parámetros Optimizatión topológica}
+              \label{fig:imagen_x}
+            \end{figure}
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{initi.png}
+              \caption{Get initial value}
+              \label{fig:imagen_x}
+            \end{figure}
+            \subsection{Resultados y espejos}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{mirror.png}
+              \caption{Mirror 1}
+              \label{fig:imagen_x}
+            \end{figure}
+
+ \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{sup.png}
+              \caption{Superficie 1}
+              \label{fig:imagen_x}
+            \end{figure}
+
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{las.png}
+              \caption{Últimas configuraciones}
+              \label{fig:imagen_x}
+            \end{figure}
+\section{Resultados}
+Los resultados obtenidos muestran una distribución óptima del material en la viga MBB, minimizando la masa mientras se cumplen las restricciones de carga y desplazamiento. La optimización topológica ha permitido identificar las áreas críticas donde se requiere mayor rigidez y, por lo tanto, se ha concentrado el material. El diseño final muestra una geometría eficiente que maximiza el rendimiento estructural.
+ \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Distribución del esfuerzo.png}
+              \caption{Distribución del esfuerzo}
+              \label{fig:imagen_x}
+            \end{figure}
+             \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{Thetac.png}
+              \caption{Thetac vs thetaf} 
+              \label{fig:imagen_x}
+            \end{figure}
+
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.9\textwidth]{theta.png}
+              \caption{Thetaf vs theta} 
+              \label{fig:imagen_x}
+            \end{figure}
+          \section{Conclusiones}
+La optimización topológica de la viga MBB utilizando el método SIMP ha demostrado ser una herramienta eficaz para mejorar el diseño estructural. Los resultados obtenidos indican que es posible reducir significativamente la masa del componente sin comprometer su integridad estructural. Además, la implementación en COMSOL Multiphysics ha facilitado el proceso de modelado y optimización, permitiendo una visualización clara de los resultados y una fácil interpretación de los datos. 
+Además logramos comprobar todos los criterios de optimización mencionados anteriormente, como la suavización de la distribución del material, el control del volumen optimizado y la proyección de la variable de diseño. 
 \nocite{*}
 \bibliography{bib}
 \end{document}
