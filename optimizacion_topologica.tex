@@ -101,14 +101,14 @@
               \centering
               \includegraphics[width=0.9\textwidth]{2.png}
               \caption{Viga MBB}
-              \label{fig:imagen_x}
+              \label{fig:viga_mbb_ejemplo}
             \end{figure}
 
             \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{1.png}
               \caption{Suavización y remodelamiento}
-              \label{fig:imagen_x}
+              \label{fig:suavizacion_remodelamiento}
             \end{figure}
           Entonces podemos notar que valores de $\beta$ altos hacen que la proyección sea más estricta y definida, mientras que valores bajos hacen que la función se asemeje a una función lineal y por eso seguiría viéndose difuminada. Por lo tanto, el valor de $\beta$ debe ser lo suficientemente alto para evitar la difuminación, pero no tan alto como para que la optimización no converja o que tenga mucho coste computacional.
           Además, para evitar que todo sea sólido, limitamos el volumen optimizado.
@@ -128,16 +128,15 @@
   \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{Definimos los estudios a realizar.png}
-              \caption{Moldel Solids and Topology Optimization Stationary}
-              \label{fig:imagen_x}
+              \caption{Model Solids and Topology Optimization Stationary}
+              \label{fig:comsol_estudios}
             \end{figure}
-          \bibliographystyle{apacite}
-\subsection{Definimos las variables mas importantes del estudio}}
+\subsection{Definimos las variables mas importantes del estudio}
 \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{variables.png}
               \caption{Definición de variables}
-              \label{fig:imagen_x}
+              \label{fig:comsol_variables}
             \end{figure}
 
             \subsection{Definimos la geometría a estudiar}
@@ -145,7 +144,7 @@
               \centering
               \includegraphics[width=0.9\textwidth]{Geaometria.png}
               \caption{Geometría rectangular}
-              \label{fig:imagen_x}
+              \label{fig:comsol_geometria}
             \end{figure}
 
             \subsection{Definimos los límites y simetrías}
@@ -153,20 +152,20 @@
               \centering
               \includegraphics[width=0.9\textwidth]{Simetryy.png}
               \caption{Simetría en y}
-              \label{fig:imagen_x}
+              \label{fig:comsol_simetria_y}
             \end{figure}
               \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{Simetryy2.png}
               \caption{Simetría en x}
-              \label{fig:imagen_x}
+              \label{fig:comsol_simetria_x}
             \end{figure}
             \subsection{Agregamos el material}
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{mat.png}
               \caption{Structural Steel}
-              \label{fig:imagen_x}
+              \label{fig:comsol_material}
             \end{figure}
   \subsection{Agregamos los rollers y la fuerza}
   Definimos solo un roller ya que el otro llegará por simetría
@@ -174,62 +173,62 @@
               \centering
               \includegraphics[width=0.9\textwidth]{roll1.png}
               \caption{Roller 1}
-              \label{fig:imagen_x}
+              \label{fig:comsol_roller1}
             \end{figure}
 
             \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{force.png}
               \caption{Fuerza de -100 [kN]}
-              \label{fig:imagen_x}
+              \label{fig:comsol_fuerza}
             \end{figure}
 \subsection{Definimos la malla}
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{malla.png}
               \caption{Malla}
-              \label{fig:imagen_x}
+              \label{fig:comsol_malla}
             \end{figure}
 
             \subsection{Parámetros para la optimización topológica}
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{opt.png}
-              \caption{Optimizatión topológica}
-              \label{fig:imagen_x}
+              \caption{Optimización topológica}
+              \label{fig:comsol_opt_topo}
             \end{figure}
               \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{Param.png}
-              \caption{Parámetros Optimizatión topológica}
-              \label{fig:imagen_x}
+              \caption{Parámetros Optimización topológica}
+              \label{fig:comsol_opt_params}
             \end{figure}
             \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{initi.png}
               \caption{Get initial value}
-              \label{fig:imagen_x}
+              \label{fig:comsol_opt_initial}
             \end{figure}
             \subsection{Resultados y espejos}
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{mirror.png}
               \caption{Mirror 1}
-              \label{fig:imagen_x}
+              \label{fig:comsol_mirror1}
             \end{figure}
 
  \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{sup.png}
               \caption{Superficie 1}
-              \label{fig:imagen_x}
+              \label{fig:comsol_superficie1}
             \end{figure}
 
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{las.png}
               \caption{Últimas configuraciones}
-              \label{fig:imagen_x}
+              \label{fig:comsol_ultimas_config}
             \end{figure}
 \section{Resultados}
 Los resultados obtenidos muestran una distribución óptima del material en la viga MBB, minimizando la masa mientras se cumplen las restricciones de carga y desplazamiento. La optimización topológica ha permitido identificar las áreas críticas donde se requiere mayor rigidez y, por lo tanto, se ha concentrado el material. El diseño final muestra una geometría eficiente que maximiza el rendimiento estructural.
@@ -237,24 +236,26 @@ Los resultados obtenidos muestran una distribución óptima del material en la v
               \centering
               \includegraphics[width=0.9\textwidth]{Distribución del esfuerzo.png}
               \caption{Distribución del esfuerzo}
-              \label{fig:imagen_x}
+              \label{fig:resultados_esfuerzo}
             \end{figure}
              \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{Thetac.png}
               \caption{Thetac vs thetaf} 
-              \label{fig:imagen_x}
+              \label{fig:resultados_thetac_vs_thetaf}
             \end{figure}
 
             \begin{figure}[H]
               \centering
               \includegraphics[width=0.9\textwidth]{theta.png}
               \caption{Thetaf vs theta} 
-              \label{fig:imagen_x}
+              \label{fig:resultados_thetaf_vs_theta}
             \end{figure}
           \section{Conclusiones}
 La optimización topológica de la viga MBB utilizando el método SIMP ha demostrado ser una herramienta eficaz para mejorar el diseño estructural. Los resultados obtenidos indican que es posible reducir significativamente la masa del componente sin comprometer su integridad estructural. Además, la implementación en COMSOL Multiphysics ha facilitado el proceso de modelado y optimización, permitiendo una visualización clara de los resultados y una fácil interpretación de los datos. 
 Además logramos comprobar todos los criterios de optimización mencionados anteriormente, como la suavización de la distribución del material, el control del volumen optimizado y la proyección de la variable de diseño. 
+
+\bibliographystyle{apacite}
 \nocite{*}
 \bibliography{bib}
 \end{document}
